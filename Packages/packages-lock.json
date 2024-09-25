@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.ecasillas.missingrefsfinder": {
+      "version": "https://github.com/edcasillas/unity-missing-references-finder.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "76d9358f3cd7846364ffcdac3c8dc002ed8d9b07"
+    },
     "com.unity.2d.animation": {
       "version": "9.1.2",
       "depth": 1,
