@@ -50,13 +50,15 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _cells: 15
-    - _edge_cells_speed: 19.9
-    - _edge_speed: 0.2
+    - _edge_cells_speed: 20.63
+    - _edge_speed: 1.58
+    - _height: 0.7
     - _pixelation: 68.3
     - _smoke_edge: 0.5
     - _speed: 9.4
     - _speed_1: 15
-    m_Colors: []
+    m_Colors:
+    - _smoke_color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &409699598054324302
 MonoBehaviour:
