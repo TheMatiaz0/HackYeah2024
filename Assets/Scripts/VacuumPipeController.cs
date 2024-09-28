@@ -19,6 +19,12 @@ public class VacuumPipeController : MonoBehaviour
     [SerializeField] private AudioClip rejectSound;
     [SerializeField] private float cooldownSound = 0.5f;
     
+    [SerializeField] private Transform vacuumPeak;
+    [SerializeField] private float ignoreRadius;
+    [SerializeField] private Transform ignoreCenter;
+    
+    
+    
     [FormerlySerializedAs("isSucking")] public bool IsSucking = false;
 
     [FormerlySerializedAs("CurrentSuckingModes")]
@@ -27,7 +33,6 @@ public class VacuumPipeController : MonoBehaviour
     private float requiredTimer;
     private string[] availableMaterials;
     private Dictionary<string, int> usedSpace;
-
 
     private void Awake()
     {
@@ -45,11 +50,40 @@ public class VacuumPipeController : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        if (ignoreCenter != null)
+            Gizmos.DrawWireSphere(ignoreCenter.transform.position, ignoreRadius);
+    }
+
+
     public void FollowMouse(Vector2 parentPosition)
     {
-        Vector2 mouseDir = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = parentPosition + mouseDir.normalized;
-        transform.rotation = (Quaternion.Euler(0,0, Mathf.Atan2(mouseDir.y, mouseDir.x)*Mathf.Rad2Deg));
+
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 mouseDir;
+        float distane = Vector2.Distance(ignoreCenter.transform.position, mousePos);
+        if (distane < ignoreRadius / 2)
+        {
+            return;
+        }
+        if (distane< ignoreRadius)
+        {
+            
+             mouseDir = mousePos- (Vector2)this.ignoreCenter.transform.position;
+        }
+        else
+        {
+            
+             mouseDir = mousePos- (Vector2)this.vacuumPeak.position;
+        }
+        float angle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
+        if (this.transform.lossyScale.x < 0)
+        {
+            angle += 180;
+        }
+        transform.rotation = (Quaternion.Euler(0,0, angle));
     }
 
     private void OnTriggerStay2D(Collider2D other)

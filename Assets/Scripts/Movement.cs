@@ -16,6 +16,8 @@ namespace Lemur
         [SerializeField] private KeyCode right = KeyCode.D;
         [SearchableEnum]
         [SerializeField] private KeyCode jump = KeyCode.Space;
+
+         private Camera camera;
         
         [Header("References")]
         [SerializeField] private Collider2D leftStickyCollider;
