@@ -1,7 +1,9 @@
+using Lemur;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveController : MonoBehaviour
 {
@@ -22,9 +24,16 @@ public class WaveController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.GetComponent<Movement>() != null)
+        {
+            Destroy(other.gameObject);
+            Debug.Log("Player is dead");
+            SceneManager.LoadScene(0);
+        }
+
         if (other.GetComponent<Trash>()==null)
             return;
-        
+
         Destroy(other.gameObject);
         currentSpeed += waveAcceleration;
     }
