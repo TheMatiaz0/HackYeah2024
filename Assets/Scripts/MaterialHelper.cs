@@ -1,13 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class MaterialHelper
+[CreateAssetMenu(fileName = "SuckingModes", menuName = "SuckingModes")]
+public class MaterialHelper : ScriptableObject
 {
-    public enum ESuckingMode
-    {
-        Glass,
-        Paper,
-        Plastic
-    }
+    public MaterialKind[] SuckingModes;
+    // {"Glass", "Paper", "Plastic"}
 }

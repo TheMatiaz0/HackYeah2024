@@ -5,6 +5,7 @@ using UnityEngine;
 public class VacuumMovement : MonoBehaviour
 {
     [SerializeField] private VacuumPipeController vacuum;
+    [SerializeField] private MaterialHelper materialHelper;
     
     
     void Update()
@@ -14,11 +15,11 @@ public class VacuumMovement : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             vacuum.IsSucking = false;
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            vacuum.CurrentSuckingMode = MaterialHelper.ESuckingMode.Glass;
+            vacuum.CurrentSuckingModes = materialHelper.SuckingModes[0];
         else if (Input.GetKeyDown(KeyCode.Alpha2))
-            vacuum.CurrentSuckingMode = MaterialHelper.ESuckingMode.Paper;
+            vacuum.CurrentSuckingModes = materialHelper.SuckingModes[1];
         else if (Input.GetKeyDown(KeyCode.Alpha3))
-            vacuum.CurrentSuckingMode = MaterialHelper.ESuckingMode.Plastic;
+            vacuum.CurrentSuckingModes = materialHelper.SuckingModes[2];
         
         vacuum.FollowMouse(transform.position);
     }

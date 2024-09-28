@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vacuum: {fileID: 2052376714}
+  materialHelper: {fileID: 11400000, guid: b6e7c79b4391d4417986f40b86a90ebd, type: 2}
 --- !u!1 &477613557
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,8 +635,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipeCollider: {fileID: 2052376716}
+  materialHelper: {fileID: 11400000, guid: b6e7c79b4391d4417986f40b86a90ebd, type: 2}
   IsSucking: 0
-  CurrentSuckingMode: 0
+  CurrentSuckingModes: {fileID: 0}
 --- !u!212 &2052376715
 SpriteRenderer:
   m_ObjectHideFlags: 0

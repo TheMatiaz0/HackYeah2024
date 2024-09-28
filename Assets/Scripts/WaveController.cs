@@ -22,7 +22,7 @@ public class WaveController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!Enum.IsDefined(typeof(MaterialHelper.ESuckingMode), other.GetComponent<Trash>()?.Material.ToString()))
+        if (other.GetComponent<Trash>()==null)
             return;
         
         Destroy(other.gameObject);

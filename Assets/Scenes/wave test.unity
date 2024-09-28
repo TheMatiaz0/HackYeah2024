@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSpeed: 1
-  waveAcceleration: 0.2
+  waveAcceleration: 0.3
 --- !u!212 &374937238
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -387,8 +387,8 @@ Transform:
   m_GameObject: {fileID: 374937235}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -3.92, z: -0.18248446}
-  m_LocalScale: {x: 12.2101, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0189, y: -3.92, z: -0.18248446}
+  m_LocalScale: {x: 17.343197, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

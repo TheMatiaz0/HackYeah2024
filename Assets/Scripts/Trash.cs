@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
-    [SerializeField] public MaterialHelper.ESuckingMode Material;
+    [SerializeField] public MaterialKind kind;
 }
