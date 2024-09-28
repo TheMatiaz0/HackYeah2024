@@ -269,32 +269,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wave
       objectReference: {fileID: 0}
-    - target: {fileID: 4837822908157771848, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
-      propertyPath: DopplerLevel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4837822908157771848, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4837822908157771848, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
-      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
-      value: 0
+    - target: {fileID: 4170798382486607011, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
+      propertyPath: listener
+      value: 
+      objectReference: {fileID: 988227619}
+    - target: {fileID: 7296091240171171908, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
+      propertyPath: waveSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4092199273910121233, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 720634411}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
 --- !u!114 &104025593 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7296091240171171908, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
   m_PrefabInstance: {fileID: 104025592}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720634406}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f373075866d6e45ceb505009ec9638ba, type: 3}
@@ -600,31 +593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58600ed5b90747a4b784008dbb1179d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &720634406 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4092199273910121233, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
-  m_PrefabInstance: {fileID: 104025592}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &720634410 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4837822908157771848, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
-  m_PrefabInstance: {fileID: 104025592}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &720634411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720634406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748e1acbaa537084f885fd0391512592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 720634410}
-  timeDelay: 0.5
-  listener: {fileID: 988227619}
 --- !u!1001 &731314060
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class VacuumPipeController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         var trash = other.GetComponent<Trash>();
-        if (trash == null || trash.kind != CurrentSuckingModes)
+        if (trash == null || trash.kind != CurrentSuckingModes || IsSucking)
         {   if (previousTrash != trash && Time.time >= requiredTimer)
             {
                 vacuumAudioSource.PlayOneShot(rejectSound);
