@@ -38,7 +38,7 @@ namespace Rubin
         }
         public void SetPassed(float value)
         {
-            startTime = TimeGetter() - value;
+            startTime = TimeGetter() - value- 0.01f ;
         }
 
         public void ForceFinish()
