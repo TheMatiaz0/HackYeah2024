@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8829467817944643214}
   - component: {fileID: 1772689762929891474}
   - component: {fileID: 5502970603948897600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GlassPrefab
   m_TagString: Glass
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 0.01
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 1
