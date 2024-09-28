@@ -273,6 +273,14 @@ PrefabInstance:
       propertyPath: listener
       value: 
       objectReference: {fileID: 988227619}
+    - target: {fileID: 4170798382486607011, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
+      propertyPath: timeDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170798382486607011, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
+      propertyPath: distanceMultiply
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7296091240171171908, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
       propertyPath: waveSpeed
       value: 0.1

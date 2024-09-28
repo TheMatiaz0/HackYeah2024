@@ -8,6 +8,7 @@ public class Volume2D : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float timeDelay = 0.5f;
+    [SerializeField] private float distanceMultiply = 1.5f;
 
     private Ticker updateTicker;
     [SerializeField]
@@ -22,8 +23,8 @@ public class Volume2D : MonoBehaviour
     {
         if (updateTicker.Push())
         {
-            float delta = 1 / Vector2.Distance(transform.position, listener.position);
-            audioSource.DOFade(delta, timeDelay);
+            float delta = 1 / (Vector2.Distance(transform.position, listener.position) * distanceMultiply);
+            audioSource.DOFade(delta, timeDelay).SetLink(this.gameObject);
         }
     }
 }
