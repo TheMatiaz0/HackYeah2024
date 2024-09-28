@@ -10,6 +10,7 @@ public class UIValues : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private VacuumPipeController vacuumController;
     [SerializeField] private WaveController waveController;
+    [SerializeField] private Text text;
 
     //vacuum
     private bool isVacuumOn;
@@ -23,5 +24,7 @@ public class UIValues : MonoBehaviour
         isVacuumOn = vacuumController.IsSucking;
         currentVacuumMode = vacuumController.CurrentSuckingModes;
         waveSpeed = waveController.currentSpeed;
+
+        text.text = $"IsVacuumOn: {isVacuumOn}\nCurrentVacuumMode: {currentVacuumMode}\nWaveSpeed: {waveSpeed.ToString()}";
     }
 }

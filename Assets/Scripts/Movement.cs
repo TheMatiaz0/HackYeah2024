@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Honey;
 using Rubin;
 using UnityEngine;
 
@@ -9,8 +10,11 @@ namespace Lemur
     {
         
         [Header("Keys")]
+        [SearchableEnum]
         [SerializeField] private KeyCode left = KeyCode.A;
+        [SearchableEnum]
         [SerializeField] private KeyCode right = KeyCode.D;
+        [SearchableEnum]
         [SerializeField] private KeyCode jump = KeyCode.Space;
         
         [Header("References")]
