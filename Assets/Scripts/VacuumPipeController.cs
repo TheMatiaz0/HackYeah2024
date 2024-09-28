@@ -15,8 +15,10 @@ public class VacuumPipeController : MonoBehaviour
     [SerializeField] private float throwingSpeed = 30f;
     [Header("Audio")]
     [SerializeField] private AudioSource vacuumAudioSource;
+    [SerializeField] private AudioSource constantSource;
     [SerializeField] private AudioClip suckSound;
     [SerializeField] private AudioClip rejectSound;
+    [SerializeField] private AudioClip vacuumEngineClip;
     [SerializeField] private float cooldownSound = 0.5f;
     
     [SerializeField] private Transform vacuumPeak;
@@ -28,7 +30,7 @@ public class VacuumPipeController : MonoBehaviour
     
     
     
-    [FormerlySerializedAs("isSucking")] public bool IsSucking = false;
+    public bool IsSucking { get; private set; } = false;
 
     [FormerlySerializedAs("CurrentSuckingModes")]
     public MaterialKind CurrentSuckingMode;
@@ -43,6 +45,23 @@ public class VacuumPipeController : MonoBehaviour
         usedSpace = new Dictionary<string, int>();
         availableMaterials = new string[materialHelper.SuckingModes.Length];
     }
+
+    public void ChangeSucking(bool val)
+    {
+        if (val)
+        {
+            
+            constantSource.clip = vacuumEngineClip;
+            constantSource.loop = true;
+            constantSource.Play();
+        }
+        else
+        {
+            constantSource.Stop();
+        }
+        this.IsSucking = val;
+        
+    } 
 
     private void Start()
     {

@@ -21,16 +21,12 @@ public class VacuumMovement : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            vacuum.IsSucking = true;
-            vacuumAudioSource.clip = vacuumEngineClip;
-            vacuumAudioSource.loop = true;
-            vacuumAudioSource.Play();
+            vacuum.ChangeSucking(true);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            vacuum.IsSucking = false;
-            vacuumAudioSource.Stop();
+            vacuum.ChangeSucking(false);
         }
 
         

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2472838304121854710}
   - component: {fileID: 7925297446977104643}
-  - component: {fileID: 5878085624373409785}
   - component: {fileID: 7401736926388520909}
   - component: {fileID: 8260096227484288211}
   m_Layer: 0
@@ -37,6 +36,7 @@ Transform:
   - {fileID: 4822588979692724034}
   - {fileID: 5511617258286352381}
   - {fileID: 2322114113981368148}
+  - {fileID: 6049898739260353980}
   m_Father: {fileID: 8038133771482976853}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7925297446977104643
@@ -91,51 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5878085624373409785
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2929787305418302553}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.45674822, y: -0.009178698}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.56397957, y: 0.3494118}
-    oldSize: {x: 2.5, y: 2.5}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.15114766, y: 1.1652318}
-  m_EdgeRadius: 0
 --- !u!61 &7401736926388520909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -308,6 +263,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2472838304121854710}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5474025686648347081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6049898739260353980}
+  m_Layer: 0
+  m_Name: Throwpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6049898739260353980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474025686648347081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1606011, y: -0.006965164, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2472838304121854710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6620608775173554923
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +389,7 @@ GameObject:
   - component: {fileID: 6546589560578618275}
   - component: {fileID: 4990555584932735932}
   m_Layer: 0
-  m_Name: Sound_1
+  m_Name: EngineSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,6 +826,7 @@ GameObject:
   - component: {fileID: 8038133771482976853}
   - component: {fileID: 5466671676195845433}
   - component: {fileID: 1176492497082543092}
+  - component: {fileID: 3651346627735281142}
   m_Layer: 0
   m_Name: Lemur
   m_TagString: Untagged
@@ -879,6 +866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vacuum: {fileID: 1176492497082543092}
   materialHelper: {fileID: 11400000, guid: b6e7c79b4391d4417986f40b86a90ebd, type: 2}
+  throwingDelay: 0.05
   vacuumAudioSource: {fileID: 4990555584932735932}
   vacuumEngineClip: {fileID: 8300000, guid: f262b4b4c58571f4f89e1be8f65c5132, type: 3}
 --- !u!114 &1176492497082543092
@@ -893,14 +881,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58600ed5b90747a4b784008dbb1179d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipeCollider: {fileID: 5878085624373409785}
+  pipeCollider: {fileID: 7401736926388520909}
   materialHelper: {fileID: 11400000, guid: b6e7c79b4391d4417986f40b86a90ebd, type: 2}
+  maxCapacity: 100
+  trashPrefabs:
+  - {fileID: 5502970603948897600, guid: e16f4f88eb3f14627ac6c6e7e6762fd0, type: 3}
+  - {fileID: -1283884498041425058, guid: 05ba5482a8e7941c0bc35ef9a5cd269b, type: 3}
+  - {fileID: 8919314858010698354, guid: e6bb7c8fa98c04978a33aa4e2074f28a, type: 3}
+  spawningPoint: {fileID: 6049898739260353980}
+  throwingSpeed: 0.1
   vacuumAudioSource: {fileID: 2800588968414630220}
+  constantSource: {fileID: 4990555584932735932}
   suckSound: {fileID: 8300000, guid: bed5b757654f2444c85bf2a544ddd972, type: 3}
   rejectSound: {fileID: 8300000, guid: 382179e357be96844b0c1f3cd5a90a38, type: 3}
+  vacuumEngineClip: {fileID: 8300000, guid: f262b4b4c58571f4f89e1be8f65c5132, type: 3}
   cooldownSound: 0.5
   vacuumPeak: {fileID: 2322114113981368148}
   ignoreRadius: 1.39
   ignoreCenter: {fileID: 0}
-  IsSucking: 0
-  CurrentSuckingModes: {fileID: 0}
+  suckingForce: 0.01
+  CurrentSuckingMode: {fileID: 0}
+--- !u!61 &3651346627735281142
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066814118558643412}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.7043214, y: -0.41755727}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34703153, y: 0.49269575}
+  m_EdgeRadius: 0
