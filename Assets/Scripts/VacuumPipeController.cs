@@ -24,6 +24,9 @@ public class VacuumPipeController : MonoBehaviour
     [SerializeField] private Transform ignoreCenter;
     
     
+    [SerializeField] private float suckingForce=0.01f;
+    
+    
     
     [FormerlySerializedAs("isSucking")] public bool IsSucking = false;
 
@@ -92,6 +95,7 @@ public class VacuumPipeController : MonoBehaviour
         {
             return;
         }
+        
         var trash = other.GetComponent<Trash>();
         if (trash == null || trash.kind != CurrentSuckingMode)
         {   if (previousTrash != trash && Time.time >= requiredTimer)
@@ -135,5 +139,13 @@ public class VacuumPipeController : MonoBehaviour
         trash.GetComponent<Rigidbody2D>().AddForce((spawningPoint.position-pipeCollider.transform.position)*throwingSpeed, ForceMode2D.Impulse);
 
         
+    }
+
+    public void CallOnTriggerOnSuckPoint(GameObject itself,Collider2D other)
+    {
+        
+        if (!this.IsSucking || !other.TryGetComponent(out Rigidbody2D rb2D))
+            return;
+        rb2D.AddForce((itself.transform.position - other.transform.position).normalized * suckingForce, ForceMode2D.Impulse);
     }
 }
