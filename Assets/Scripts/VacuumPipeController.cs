@@ -54,6 +54,10 @@ public class VacuumPipeController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (IsSucking == false)
+        {
+            return;
+        }
         var trash = other.GetComponent<Trash>();
         if (trash == null || trash.kind != CurrentSuckingMode)
         {   if (previousTrash != trash && Time.time >= requiredTimer)
