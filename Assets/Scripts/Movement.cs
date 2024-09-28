@@ -7,19 +7,27 @@ namespace Lemur
 {
     public class Movement : MonoBehaviour, ITriggerBubbleUpListener
     {
-        [SerializeField] private Collider2D[] stickyColliders;
+        
+        [Header("Keys")]
         [SerializeField] private KeyCode left = KeyCode.A;
         [SerializeField] private KeyCode right = KeyCode.D;
         [SerializeField] private KeyCode jump = KeyCode.Space;
         
-        
-        [SerializeField]
-        private float jumpVelocity;
-
+        [Header("References")]
+        [SerializeField] private Collider2D leftStickyCollider;
+        [SerializeField] private Collider2D rightStickyCollider;
+        [SerializeField] private Collider2D feetCollider;
         [SerializeField]
         private LayerMask groundMask;
         
-        private Rigidbody2D rigi;
+        
+        [Header("jumping")]
+        [SerializeField]
+        private float jumpVelocity;
+        [SerializeField]
+        private float maxJumpTime = 1;
+        
+        [Header("Left/Right movement")]
         [SerializeField]
         private float accSpeed=3;
         [SerializeField]
@@ -27,27 +35,30 @@ namespace Lemur
         [SerializeField]
         private float maxSpeed = 5;
 
-        [SerializeField]
-        private float maxJumpTime = 1;
-
-
-        private Ticker jumpProgress ;
-        private Ticker canWallRunTimer; 
-        private Ticker wallRunTimer; 
-
-
         [Tooltip("If false, when object is moving in the right direction and left key is pressed, untill velocity = 0, dec is used\n If true acc is used")]
         [SerializeField] private bool fastRotation=false;
         
         
+        [Header("Wallrun")]
         [SerializeField] private float wallRunVelocity=2;
         [SerializeField] private float wallRunStartTime=0.5f;
         [SerializeField] private float wallRunTime=3f;
-
-        public Possibility ability;
         
+        [Tooltip("template direction is right")] [SerializeField]
+        private Vector2 bounceTemplateVector= new Vector2(2,3);
+
+        private Rigidbody2D rigi;
         private SpriteRenderer renderer;
-        [SerializeField] private Collider2D feetCollider;
+        
+        
+        private Ticker jumpProgress ;
+        private Ticker canWallRunTimer; 
+        private Ticker wallRunTimer; 
+
+        
+        private Possibility ability;
+        
+        private float stickyFromSide;
 
         public enum Possibility
         {
@@ -70,15 +81,34 @@ namespace Lemur
         }
 
 
+        private void Move(float dir)
+        {
+           PushIn(dir,true);
+           if (!wallRunTimer.Done)
+           {
+               if (stickyFromSide == -dir)
+               {
+                   Debug.Log("bounceeee");
+                   ForceStickyExit();
+                   BounceOff(dir);
+               }
+           }
+        }
+
+        private void BounceOff(float dir)
+        {
+            this.rigi.velocity += new Vector2(dir*bounceTemplateVector.x, bounceTemplateVector.y);
+        }
+
         private void Update()
         {
             if (Input.GetKey(left))
             {
-                PushIn(-1,true);
+                Move(-1);
             }
             else if(Input.GetKey(right))
             {
-                PushIn(1,true);
+                Move(1);
             }
             else
             {
@@ -150,6 +180,7 @@ namespace Lemur
             {
                 ability = Possibility.Wall;
                 jumpProgress.Reset();
+                Debug.Log("jump");
                 KeepJumping();
             }
             else if (!jumpProgress.Done)
@@ -188,13 +219,26 @@ namespace Lemur
         public void OnBubbleUpTriggerEnter(GameObject internalObj, Collider2D incoming)
         {
             
-            if ( ( groundMask.value &   (1<<incoming.gameObject.layer)) !=0  && stickyColliders.Any(item => item.gameObject == internalObj)) {
-                if (IsAtLeast(Possibility.Wall))
-                    canWallRunTimer.Reset();
-            }
             if ( ( groundMask.value &   (1<<incoming.gameObject.layer)) !=0 && feetCollider.gameObject == internalObj)
             {
                 ability = Possibility.All;
+            }
+            if ( ( groundMask.value &   (1<<incoming.gameObject.layer)) !=0 ) {
+
+                if (leftStickyCollider.gameObject == internalObj)
+                {
+                    stickyFromSide = -1;
+                }
+                else if (rightStickyCollider.gameObject == internalObj)
+                {
+                    stickyFromSide = 1;
+                }
+                else
+                {
+                    return;
+                }
+                if (IsAtLeast(Possibility.Wall))
+                    canWallRunTimer.Reset();
             }
         }
 
@@ -205,16 +249,21 @@ namespace Lemur
 
         public void OnBubbleUpTriggerExit(GameObject internalObj, Collider2D incoming)
         {
-            if ( ( groundMask.value &    (1<<incoming.gameObject.layer) ) !=0  && stickyColliders.Any(item => item.gameObject == internalObj)) {
-                if (!canWallRunTimer.Done)
-                {
-                    canWallRunTimer.ForceFinish();
-                }
-                if (!wallRunTimer.Done)
-                {
-                    wallRunTimer.ForceFinish();
-                }
+            if ( ( groundMask.value &    (1<<incoming.gameObject.layer) ) !=0  && new Collider2D[]{leftStickyCollider,rightStickyCollider}.Any(item => item.gameObject == internalObj)) {
+                ForceStickyExit();
             }
+        }
+
+        private void ForceStickyExit()
+        {
+            if (!canWallRunTimer.Done)
+            {
+                canWallRunTimer.ForceFinish();
+            }
+            if (!wallRunTimer.Done)
+            {
+                wallRunTimer.ForceFinish();
+            }    
         }
     }
 }
