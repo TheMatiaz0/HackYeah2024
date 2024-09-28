@@ -16,7 +16,7 @@ public class VacuumPipeController : MonoBehaviour
 
     private void Awake()
     {
-        CurrentSuckingModes= materialHelper.SuckingModes[0];
+        CurrentSuckingModes = materialHelper.SuckingModes[0];
     }
 
     public void FollowMouse(Vector2 parentPosition)

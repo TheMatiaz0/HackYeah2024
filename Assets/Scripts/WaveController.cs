@@ -8,7 +8,7 @@ public class WaveController : MonoBehaviour
     [SerializeField] private float waveSpeed = 1f;
     [SerializeField] private float waveAcceleration = .2f;
 
-    private float currentSpeed;
+    public float currentSpeed { get; private set; }
 
     private void Awake()
     {
