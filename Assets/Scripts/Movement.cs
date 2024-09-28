@@ -7,7 +7,10 @@ namespace Lemur
 {
     public class Movement : MonoBehaviour, ITriggerBubbleUpListener
     {
-        [SerializeField] private Collider2D[] stickyColliders;  
+        [SerializeField] private Collider2D[] stickyColliders;
+        [SerializeField] private KeyCode left = KeyCode.A;
+        [SerializeField] private KeyCode right = KeyCode.D;
+        [SerializeField] private KeyCode jump = KeyCode.Space;
         
         
         [SerializeField]
@@ -69,11 +72,11 @@ namespace Lemur
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(left))
             {
                 PushIn(-1,true);
             }
-            else if(Input.GetKey(KeyCode.RightArrow))
+            else if(Input.GetKey(right))
             {
                 PushIn(1,true);
             }
@@ -82,7 +85,7 @@ namespace Lemur
                 PushIn( - Mathf.Sign(this.rigi.velocity.x) ,false);
             }
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(jump))
             {
                 if (!canWallRunTimer.Done )
                 {
