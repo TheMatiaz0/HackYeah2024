@@ -15,41 +15,98 @@ public class VacuumPipeController : MonoBehaviour
     [SerializeField] private float throwingSpeed = 30f;
     [Header("Audio")]
     [SerializeField] private AudioSource vacuumAudioSource;
+    [SerializeField] private AudioSource constantSource;
     [SerializeField] private AudioClip suckSound;
     [SerializeField] private AudioClip rejectSound;
+    [SerializeField] private AudioClip vacuumEngineClip;
     [SerializeField] private float cooldownSound = 0.5f;
     
-    [FormerlySerializedAs("isSucking")] public bool IsSucking = false;
+    [SerializeField] private Transform vacuumPeak;
+    [SerializeField] private float ignoreRadius;
+    [SerializeField] private Transform ignoreCenter;
+    
+    
+    [SerializeField] private float suckingForce=0.01f;
+    
+    
+    
+    public bool IsSucking { get; private set; } = false;
 
     [FormerlySerializedAs("CurrentSuckingModes")]
     public MaterialKind CurrentSuckingMode;
+    public Dictionary<string, int> UsedSpace;
+    
     private Trash previousTrash;
     private float requiredTimer;
     private string[] availableMaterials;
-    private Dictionary<string, int> usedSpace;
-
 
     private void Awake()
     {
         CurrentSuckingMode = materialHelper.SuckingModes[0];
-        usedSpace = new Dictionary<string, int>();
+        UsedSpace = new Dictionary<string, int>();
         availableMaterials = new string[materialHelper.SuckingModes.Length];
     }
+
+    public void ChangeSucking(bool val)
+    {
+        if (val)
+        {
+            
+            constantSource.clip = vacuumEngineClip;
+            constantSource.loop = true;
+            constantSource.Play();
+        }
+        else
+        {
+            constantSource.Stop();
+        }
+        this.IsSucking = val;
+        
+    } 
 
     private void Start()
     {
         for (int i = 0; i < materialHelper.SuckingModes.Length; i++)
         {
             availableMaterials[i] = materialHelper.SuckingModes[i].ToString();
-            usedSpace.Add(availableMaterials[i], 0);
+            UsedSpace.Add(availableMaterials[i], 0);
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        if (ignoreCenter != null)
+            Gizmos.DrawWireSphere(ignoreCenter.transform.position, ignoreRadius);
+    }
+
+
     public void FollowMouse(Vector2 parentPosition)
     {
-        Vector2 mouseDir = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = parentPosition + mouseDir.normalized;
-        transform.rotation = (Quaternion.Euler(0,0, Mathf.Atan2(mouseDir.y, mouseDir.x)*Mathf.Rad2Deg));
+
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 mouseDir;
+        float distane = Vector2.Distance(ignoreCenter.transform.position, mousePos);
+        if (distane < ignoreRadius / 2)
+        {
+            return;
+        }
+        if (distane< ignoreRadius)
+        {
+            
+             mouseDir = mousePos- (Vector2)this.ignoreCenter.transform.position;
+        }
+        else
+        {
+            
+             mouseDir = mousePos- (Vector2)this.vacuumPeak.position;
+        }
+        float angle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
+        if (this.transform.lossyScale.x < 0)
+        {
+            angle += 180;
+        }
+        transform.rotation = (Quaternion.Euler(0,0, angle));
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -58,6 +115,7 @@ public class VacuumPipeController : MonoBehaviour
         {
             return;
         }
+        
         var trash = other.GetComponent<Trash>();
         if (trash == null || trash.kind != CurrentSuckingMode)
         {   if (previousTrash != trash && Time.time >= requiredTimer)
@@ -69,7 +127,7 @@ public class VacuumPipeController : MonoBehaviour
             return;
         }
 
-        usedSpace[trash.kind.ToString()]++;
+        UsedSpace[trash.kind.ToString()]++;
         SuckOutTrash(trash);
     }
 
@@ -86,11 +144,11 @@ public class VacuumPipeController : MonoBehaviour
         {
             if (i.kind != CurrentSuckingMode)
                 continue;
-            if (usedSpace[i.kind.ToString()] <= 0)
+            if (UsedSpace[i.kind.ToString()] <= 0)
                 return;
             
             trash = Instantiate(i);
-            usedSpace[i.kind.ToString()]--;
+            UsedSpace[i.kind.ToString()]--;
             break;
         }
 
@@ -101,5 +159,13 @@ public class VacuumPipeController : MonoBehaviour
         trash.GetComponent<Rigidbody2D>().AddForce((spawningPoint.position-pipeCollider.transform.position)*throwingSpeed, ForceMode2D.Impulse);
 
         
+    }
+
+    public void CallOnTriggerOnSuckPoint(GameObject itself,Collider2D other)
+    {
+        
+        if (!this.IsSucking || !other.TryGetComponent(out Rigidbody2D rb2D))
+            return;
+        rb2D.AddForce((itself.transform.position - other.transform.position).normalized * suckingForce, ForceMode2D.Impulse);
     }
 }

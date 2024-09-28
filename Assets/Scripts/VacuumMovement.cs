@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,6 @@ public class VacuumMovement : MonoBehaviour
     [SerializeField] private AudioSource vacuumAudioSource;
     [SerializeField] private AudioClip vacuumEngineClip;
 
-
     private float currentThrowingDelay = 0f;
     
     void Update()
@@ -21,16 +21,12 @@ public class VacuumMovement : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            vacuum.IsSucking = true;
-            vacuumAudioSource.clip = vacuumEngineClip;
-            vacuumAudioSource.loop = true;
-            vacuumAudioSource.Play();
+            vacuum.ChangeSucking(true);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            vacuum.IsSucking = false;
-            vacuumAudioSource.Stop();
+            vacuum.ChangeSucking(false);
         }
 
         
