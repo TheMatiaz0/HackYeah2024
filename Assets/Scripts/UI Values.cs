@@ -22,7 +22,7 @@ public class UIValues : MonoBehaviour
     void Update()
     {
         isVacuumOn = vacuumController.IsSucking;
-        currentVacuumMode = vacuumController.CurrentSuckingModes;
+        currentVacuumMode = vacuumController.CurrentSuckingMode;
         waveSpeed = waveController.currentSpeed;
 
         text.text = $"IsVacuumOn: {isVacuumOn}\nCurrentVacuumMode: {currentVacuumMode}\nWaveSpeed: {waveSpeed.ToString()}";
