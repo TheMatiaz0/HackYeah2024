@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuckController : MonoBehaviour
+public class VacuumSuckController : MonoBehaviour
 {
     [SerializeField] private Collider2D suckCollider;
     [SerializeField] private VacuumPipeController vacuumController;
