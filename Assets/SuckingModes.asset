@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cf744df274a432e896d12f0e24a9c4, type: 3}
+  m_Name: SuckingModes
+  m_EditorClassIdentifier: 
+  SuckingModes:
+  - {fileID: 11400000, guid: 3ee262687a7224043a2be811877f3e29, type: 2}
+  - {fileID: 11400000, guid: 52f36fa80f31f410580af15fdea6a0b3, type: 2}
+  - {fileID: 11400000, guid: 78fd095aa8e5e438ab8ce39fccfc36b8, type: 2}
