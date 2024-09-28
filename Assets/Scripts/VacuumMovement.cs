@@ -14,11 +14,11 @@ public class VacuumMovement : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             vacuum.IsSucking = false;
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            vacuum.CurrentSuckingMode = VacuumPipeController.ESuckingMode.Glass;
+            vacuum.CurrentSuckingMode = MaterialHelper.ESuckingMode.Glass;
         else if (Input.GetKeyDown(KeyCode.Alpha2))
-            vacuum.CurrentSuckingMode = VacuumPipeController.ESuckingMode.Paper;
+            vacuum.CurrentSuckingMode = MaterialHelper.ESuckingMode.Paper;
         else if (Input.GetKeyDown(KeyCode.Alpha3))
-            vacuum.CurrentSuckingMode = VacuumPipeController.ESuckingMode.Plastic;
+            vacuum.CurrentSuckingMode = MaterialHelper.ESuckingMode.Plastic;
         
         vacuum.FollowMouse(transform.position);
     }
