@@ -17,6 +17,12 @@ namespace Lemur
         [SearchableEnum]
         [SerializeField] private KeyCode jump = KeyCode.Space;
 
+        [Header("Anims")] [SerializeField] private AnimationClip running;
+
+        private SimpleAnimation animer;
+            
+            
+
          private Camera camera;
         
         [Header("References")]
@@ -75,9 +81,11 @@ namespace Lemur
             blockMoveTimer= TickerCreator.CreateNormalTime(lostControlAfterBounceTime); 
             blockMoveTimer.ForceFinish();
             jumpProgress.ForceFinish();
+            animer = this.GetComponent<SimpleAnimation>();
         }
 
 
+        
         private void Move(float dir)
         {
             if (!blockMoveTimer.Done)
@@ -93,6 +101,7 @@ namespace Lemur
 
         private void Update()
         {
+            
             if (Input.GetKey(left))
             {
                 Move(-1);
@@ -119,9 +128,32 @@ namespace Lemur
 
         }
 
+        private void PlayIfExists(string nm)
+        {
+            if (animer.GetState(nm)!=null)
+            {
+                animer.Play(nm);
+            }
+            else
+            {
+                Debug.LogWarning($"Mising an animation {nm}");
+                animer.Stop();
+            }
+        }
         private void FixedUpdate()
         {
-            
+            if (Mathf.Abs(rigi.velocity.x) > 0.2f && Mathf.Abs(rigi.velocity.y) < 0.1f)
+            {
+                PlayIfExists("Running");
+            }
+            else if(Mathf.Abs(rigi.velocity.y)<0.1f)
+            {
+                animer.Play("Walking");
+            }
+            else
+            {
+                animer.Play("Flying");
+            }
             
         }
 
