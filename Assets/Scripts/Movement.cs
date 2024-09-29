@@ -119,7 +119,7 @@ namespace Lemur
             else
                 PushIn( - Mathf.Sign(this.rigi.velocity.x) ,false);
 
-            if (Input.GetKeyDown(jump))
+            if ((jumpProgress.Done && Input.GetKeyDown(jump) || (!jumpProgress.Done && Input.GetKey(jump)))) 
                 TryJump();
             else
                 LetGoJump();
@@ -229,11 +229,17 @@ namespace Lemur
         public void OnBubbleUpTriggerStay(GameObject internalObj, Collider2D incoming)
         {
             
-            if ( ( groundMask.value &   (1<<incoming.gameObject.layer)) !=0 && feetCollider.gameObject == internalObj && this.rigi.velocity.y<=0.1)
+            if ( ( groundMask.value &   (1<<incoming.gameObject.layer)) !=0 && feetCollider.gameObject == internalObj )
             {
 
+                
+                jumpProgress.ForceFinish();
+                
+                if(this.rigi.velocity.y>0.1f)
+                    return;
                 if (isOnTheGround)
                     return;
+                
                 isOnTheGround = true;
                 previousCollision = null;
                 holdingW = 0f;
