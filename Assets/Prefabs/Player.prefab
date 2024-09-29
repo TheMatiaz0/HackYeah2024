@@ -5234,6 +5234,8 @@ GameObject:
   - component: {fileID: 2446583608291131237}
   - component: {fileID: 7010727214401242005}
   - component: {fileID: 6074981256969521310}
+  - component: {fileID: 1368760176099202269}
+  - component: {fileID: 1902392145431815038}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5306,7 +5308,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f454b1f4a6829960daf86e92750aafcc, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5332,8 +5334,7 @@ MonoBehaviour:
   left: 97
   right: 100
   jump: 32
-  leftStickyCollider: {fileID: 0}
-  rightStickyCollider: {fileID: 0}
+  running: {fileID: 0}
   feetCollider: {fileID: 7122619588847180545}
   groundMask:
     serializedVersion: 2
@@ -5341,12 +5342,16 @@ MonoBehaviour:
   walkingPatricles: {fileID: 1957664218146010163}
   jumpVelocity: 11
   maxJumpTime: 1
+  lostControlAfterBounceTime: 0.5
+  maxHoldingWtime: 0.03
+  climbingMultiplication: 1.5
+  minimalClimbingVelocity: 0.4
+  maximumYVelocity: 11
   accSpeed: 25
   decSpeed: 40
   maxSpeed: 3
   fastRotation: 1
   bounceTemplateVector: {x: 3, y: 2}
-  lostControlAfterBounceTime: 0.5
 --- !u!50 &2446583608291131237
 Rigidbody2D:
   serializedVersion: 4
@@ -5439,6 +5444,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78101704b2f3a4f57bd3ce291b30840a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1368760176099202269
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111057708006856240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1902392145431815038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111057708006856240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3759e2aae0f7b9a47bb98fc64bf3c543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingMode: 1
+  m_WrapMode: 0
+  m_Clip: {fileID: 0}
+  m_States:
+  - clip: {fileID: 0}
+    name: Default
+    defaultState: 1
+  - clip: {fileID: 7400000, guid: 0f6cdcb32d9824ed4b4d52ba2bdc4b60, type: 2}
+    name: Walking
+    defaultState: 0
 --- !u!1 &7622274082653076755
 GameObject:
   m_ObjectHideFlags: 0
