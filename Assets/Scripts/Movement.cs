@@ -155,11 +155,11 @@ namespace Lemur
             }
             else if(Mathf.Abs(rigi.velocity.y)<0.1f)
             {
-                animer.Play("Walking");
-            }
+                PlayIfExists("Idle");
+            } 
             else
             {
-                animer.Play("Flying");
+                PlayIfExists("Flying");
             }
             
         }
