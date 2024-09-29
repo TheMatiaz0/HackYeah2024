@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3024129601247939882}
   - component: {fileID: 4198416864990826913}
   - component: {fileID: 1713511307430792059}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Confetti Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4901,7 +4901,7 @@ GameObject:
   - component: {fileID: 5736147094650074530}
   - component: {fileID: 8691128089758770081}
   - component: {fileID: 3451138202493119250}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TrashBinPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
