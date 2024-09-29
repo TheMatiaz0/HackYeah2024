@@ -28,7 +28,7 @@ public class WaveController : MonoBehaviour
         {
             Destroy(other.gameObject);
             Debug.Log("Player is dead");
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("vacuum test");
         }
 
         if (other.GetComponent<Trash>()==null)
