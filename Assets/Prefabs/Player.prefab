@@ -5017,7 +5017,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -76660095
+  m_SortingLayerID: -1269575477
   m_SortingLayer: 1
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b356a3c6b278f56348e4f236b2d3cba7, type: 3}
@@ -5234,8 +5234,8 @@ GameObject:
   - component: {fileID: 2446583608291131237}
   - component: {fileID: 7010727214401242005}
   - component: {fileID: 6074981256969521310}
-  - component: {fileID: 1368760176099202269}
   - component: {fileID: 1902392145431815038}
+  - component: {fileID: 3580722540027160458}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5348,9 +5348,9 @@ MonoBehaviour:
   minimalClimbingVelocity: 0.4
   maximumYVelocity: 11
   minimumAirTime: 0.3
-  accSpeed: 25
-  decSpeed: 40
-  maxSpeed: 3
+  accSpeed: 40
+  decSpeed: 12
+  maxSpeed: 5
   fastRotation: 1
   bounceTemplateVector: {x: 3, y: 2}
 --- !u!50 &2446583608291131237
@@ -5445,27 +5445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78101704b2f3a4f57bd3ce291b30840a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1368760176099202269
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7111057708006856240}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1902392145431815038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5493,6 +5472,27 @@ MonoBehaviour:
   - clip: {fileID: 7400000, guid: 08a2664b40368c14fb78d7fba55310d0, type: 2}
     name: Running
     defaultState: 0
+--- !u!95 &3580722540027160458
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111057708006856240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0eee47b15ca0f247a3a7c2dc0d5d6ad, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7622274082653076755
 GameObject:
   m_ObjectHideFlags: 0
@@ -5648,7 +5648,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -76660095
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: afc9015ccad3cbf01bd0af610af343d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5671,7 +5671,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 10424289082771616, guid: 24da3543ca48ce54bb05ca7fd838deaf, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 10424289082771616, guid: 24da3543ca48ce54bb05ca7fd838deaf, type: 3}
       propertyPath: m_SortingOrder
@@ -5687,7 +5687,7 @@ PrefabInstance:
       objectReference: {fileID: 5511322080675308931}
     - target: {fileID: 5355041258242682270, guid: 24da3543ca48ce54bb05ca7fd838deaf, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5355041258242682270, guid: 24da3543ca48ce54bb05ca7fd838deaf, type: 3}
       propertyPath: m_SortingOrder
@@ -5703,7 +5703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7925297446977104643, guid: 24da3543ca48ce54bb05ca7fd838deaf, type: 3}
       propertyPath: m_SortingLayerID
-      value: -299222575
+      value: 1097712347
       objectReference: {fileID: 0}
     - target: {fileID: 8038133771482976853, guid: 24da3543ca48ce54bb05ca7fd838deaf, type: 3}
       propertyPath: m_LocalPosition.x
