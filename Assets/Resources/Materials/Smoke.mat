@@ -49,11 +49,12 @@ Material:
     - _Float_1: -18.74
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _cells: 15
+    - _cells: 18.2
+    - _cells_2: 6
     - _edge_cells_speed: 20.63
     - _edge_speed: 1.58
     - _height: 0.4
-    - _pixelation: 68.3
+    - _pixelation: 265
     - _smoke_edge: 0.5
     - _speed: 9.4
     - _speed_1: 15
