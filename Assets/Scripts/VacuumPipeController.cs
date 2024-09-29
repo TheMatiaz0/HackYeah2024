@@ -27,9 +27,10 @@ public class VacuumPipeController : MonoBehaviour
     
     
     [SerializeField] private float suckingForce=0.01f;
-    
-    
-    
+
+    public int MaxCapacity => maxCapacity;
+
+
     public bool IsSucking { get; private set; } = false;
 
     [FormerlySerializedAs("CurrentSuckingModes")]

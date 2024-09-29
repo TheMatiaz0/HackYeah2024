@@ -47,7 +47,7 @@ public class UIValues : MonoBehaviour
         {       
             images[i].sprite = item.AssignedSymbol;
             var count = vacuumController.UsedSpace[item];
-            texts[i].text = count.ToString();
+            texts[i].text = $" {count.ToString()}/{vacuumController.MaxCapacity}";
 
             i++;
         }
