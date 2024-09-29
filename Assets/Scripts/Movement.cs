@@ -112,34 +112,20 @@ namespace Lemur
 
         private void Update()
         {
-            
             if (Input.GetKey(left))
-            {
                 Move(-1);
-            }
             else if(Input.GetKey(right))
-            {
                 Move(1);
-            }
             else
-            {
                 PushIn( - Mathf.Sign(this.rigi.velocity.x) ,false);
-            }
 
             if (Input.GetKeyDown(jump))
-            {
                 TryJump();
-                
-            }
             else
-            {
                 LetGoJump();
-            }
 
             if (!isOnTheGround) airTime += Time.deltaTime;
             else airTime = 0f;
-
-
         }
 
         private void PlayIfExists(string nm)
@@ -157,18 +143,11 @@ namespace Lemur
         private void FixedUpdate()
         {
             if (Mathf.Abs(rigi.velocity.x) > 0.2f && Mathf.Abs(rigi.velocity.y) < 0.1f)
-            {
                 PlayIfExists("Running");
-            }
             else if(Mathf.Abs(rigi.velocity.y)<0.1f)
-            {
                 PlayIfExists("Idle");
-            } 
             else
-            {
                 PlayIfExists("Flying");
-            }
-            
         }
 
 
