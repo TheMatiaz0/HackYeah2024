@@ -165,6 +165,12 @@ public class VacuumPipeController : MonoBehaviour
     {
         if (!this.IsSucking || !other.TryGetComponent(out Rigidbody2D rb2D))
             return;
-        rb2D.AddForce((itself.transform.position - other.transform.position).normalized * suckingForce, ForceMode2D.Impulse);
+        Trash trash = other.GetComponent<Trash>();
+        if (trash == null)
+        {
+            return;
+        }
+        if(this.CurrentSuckingMode  == trash.kind)
+            rb2D.AddForce((itself.transform.position - other.transform.position).normalized * suckingForce, ForceMode2D.Impulse);
     }
 }
