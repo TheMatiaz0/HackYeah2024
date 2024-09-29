@@ -163,7 +163,6 @@ public class VacuumPipeController : MonoBehaviour
 
     public void CallOnTriggerOnSuckPoint(GameObject itself,Collider2D other)
     {
-        
         if (!this.IsSucking || !other.TryGetComponent(out Rigidbody2D rb2D))
             return;
         rb2D.AddForce((itself.transform.position - other.transform.position).normalized * suckingForce, ForceMode2D.Impulse);

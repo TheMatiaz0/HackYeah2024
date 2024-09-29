@@ -317,6 +317,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4782168671689035887, guid: 52394ee1174af41d8bb1a5a2c7fe4090, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1049280675}
     - target: {fileID: 5953084017657730289, guid: 52394ee1174af41d8bb1a5a2c7fe4090, type: 3}
       propertyPath: m_Name
       value: TrashBinPrefab
