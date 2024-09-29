@@ -242,19 +242,24 @@ namespace Lemur
             
         }
 
-        public void OnBubbleUpTriggerEnter(GameObject internalObj, Collider2D incoming)
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            
+        }
+
+        public void OnBubbleUpTriggerStay(GameObject internalObj, Collider2D incoming)
         {
             
             if ( ( groundMask.value &   (1<<incoming.gameObject.layer)) !=0 && feetCollider.gameObject == internalObj && this.rigi.velocity.y<=0.1)
             {
-                
-                if (!isOnTheGround)
-                {
-                    walkingPatricles.Play();
-                }
+
+                if (isOnTheGround)
+                    return;
                 isOnTheGround = true;
                 previousCollision = null;
                 holdingW = 0f;
+                walkingPatricles.Play();
+                
             }
         }
 
@@ -273,6 +278,5 @@ namespace Lemur
             }
         }
 
-     
     }
 }
