@@ -5,22 +5,15 @@ using UnityEngine;
 public class ShockwaveShaderController : MonoBehaviour
 {
 
-    [SerializeField] private float shockwaveTime = 0.75f;
+    [SerializeField] private float shockwaveTime = 4.75f;
     private Coroutine shockwaveCoroutine;
     [SerializeField] private Material material;
     private static int distance = Shader.PropertyToID("_distance");
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            startShockwave();
-        }
-    }
 
     public void startShockwave()
     {
-        shockwaveCoroutine = StartCoroutine(ShockwaveEnumerator(-0.1f, 0.1f));
+        shockwaveCoroutine = StartCoroutine(ShockwaveEnumerator(-0.2f, 3.0f));
     }
 
     private IEnumerator ShockwaveEnumerator(float startPos, float endPos)
