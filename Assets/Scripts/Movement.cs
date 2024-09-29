@@ -235,8 +235,8 @@ namespace Lemur
                 
                 jumpProgress.ForceFinish();
                 
-                if(this.rigi.velocity.y>0.1f)
-                    return;
+//                if(this.rigi.velocity.y>0.1f)
+//                    return;
                 if (isOnTheGround)
                     return;
                 
