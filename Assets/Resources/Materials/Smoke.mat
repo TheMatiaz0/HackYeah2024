@@ -60,7 +60,7 @@ Material:
     - _speed: 9.4
     - _speed_1: 15
     m_Colors:
-    - _smoke_color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0}
+    - _smoke_color: {r: 0.5068661, g: 0.20024922, b: 0.5660378, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &409699598054324302
 MonoBehaviour:
