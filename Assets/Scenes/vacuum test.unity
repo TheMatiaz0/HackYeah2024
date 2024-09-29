@@ -558,17 +558,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5438826480683310, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 1956018645696267546, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
       propertyPath: m_Color.b
-      value: 0.6981132
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1956018645696267546, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
       propertyPath: m_Color.g
-      value: 0.6981132
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1956018645696267546, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
       propertyPath: m_Color.r
-      value: 0.6981132
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1957664218146010163, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
       propertyPath: playOnAwake
@@ -602,13 +606,21 @@ PrefabInstance:
       propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2446583608291131237, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
-      propertyPath: m_GravityScale
-      value: 1.5
+    - target: {fileID: 7010727214401242005, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010727214401242005, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
+      value: -0.88
       objectReference: {fileID: 0}
     - target: {fileID: 7111057708006856240, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122619588847180545, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7379252941595061712, guid: 309802a7416f48a428ccb1b73b9f65b4, type: 3}
       propertyPath: accSpeed
