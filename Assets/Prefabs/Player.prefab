@@ -3619,15 +3619,16 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    m_Planes: []
+    m_Planes:
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -3789,7 +3790,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.01
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
@@ -5058,7 +5059,7 @@ Transform:
   m_GameObject: {fileID: 5390672699341234333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.382, y: -0.221, z: 0}
+  m_LocalPosition: {x: -0.382, y: -0.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5135,7 +5136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.38440567, y: -0.28047332}
+  m_Offset: {x: 0.38440567, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5524,7 +5525,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f454b1f4a6829960daf86e92750aafcc, type: 3}
-  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5555,12 +5556,12 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  walkingPatricles: {fileID: 0}
-  jumpVelocity: 7
-  maxJumpTime: 1.5
-  accSpeed: 40
+  walkingPatricles: {fileID: 1957664218146010163}
+  jumpVelocity: 11
+  maxJumpTime: 1
+  accSpeed: 25
   decSpeed: 40
-  maxSpeed: 5
+  maxSpeed: 3
   fastRotation: 1
   wallRunVelocity: 3
   wallRunStartTime: 2
@@ -5640,8 +5641,8 @@ PolygonCollider2D:
     - - {x: -0.5, y: 0.5}
       - {x: -0.58714604, y: 0.35502934}
       - {x: -0.58264816, y: -0.4083687}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
+      - {x: -0.5, y: -0.88}
+      - {x: 0.5, y: -0.88}
       - {x: 0.5799945, y: -0.40865314}
       - {x: 0.5962471, y: 0.3684628}
       - {x: 0.5, y: 0.5}
@@ -5684,8 +5685,8 @@ Transform:
   m_GameObject: {fileID: 7622274082653076755}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.161, y: 0.374, z: 0}
-  m_LocalScale: {x: 0.291, y: 0.17400002, z: 0.1}
+  m_LocalPosition: {x: -0.161, y: 0.318, z: 0}
+  m_LocalScale: {x: 0.291, y: 0.291, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4175617250454742771}
