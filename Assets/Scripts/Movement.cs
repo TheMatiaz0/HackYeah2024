@@ -73,6 +73,7 @@ namespace Lemur
 
         private float holdingW = 0f;
         private float airTime = 0f;
+        private Collision2D previousCollision;
 
 
         public enum Possibility
@@ -202,7 +203,7 @@ namespace Lemur
         {
             if (Input.GetKeyUp(KeyCode.W) || holdingW >= maxHoldingWtime || this.rigi.velocity.y <= minimalClimbingVelocity || airTime <= minimumAirTime)
                 return;
-            if (!isOnTheGround && Input.GetKey(KeyCode.W))
+            if (!isOnTheGround && Input.GetKey(KeyCode.W) && previousCollision != other)
             {
                 this.rigi.velocity = Vector2.up * this.rigi.velocity.magnitude * climbingMultiplication;
                 if (this.rigi.velocity.y > maximumYVelocity)
@@ -211,6 +212,15 @@ namespace Lemur
 
                 // BounceOff(Mathf.Sign(this.transform.position.x-other.transform.position.x));
             }
+        }
+
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            if (holdingW < 0.02f)
+                return;
+            
+            previousCollision = other;
+            holdingW = 0f;
         }
 
         private void PushIn(float dir, bool isManual)
@@ -242,6 +252,7 @@ namespace Lemur
                     walkingPatricles.Play();
                 }
                 isOnTheGround = true;
+                previousCollision = null;
                 holdingW = 0f;
             }
         }
