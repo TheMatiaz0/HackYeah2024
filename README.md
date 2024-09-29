@@ -1,6 +1,13 @@
 # HackYeah2024
 A repository for HackYeah 2024.
 
+Game created by:
+- Mateusz Kusionowicz
+- Biegus
+- Jakub Pasiecznik
+- Bartosz Chochół
+- Artur Trawiński
+
 
 Plugins/Tools used
 
