@@ -124,7 +124,7 @@ namespace Lemur
                 PushIn( - Mathf.Sign(this.rigi.velocity.x) ,false);
             }
 
-            if (Input.GetKey(jump))
+            if (Input.GetKeyDown(jump))
             {
                 if (!canWallRunTimer.Done )
                 {

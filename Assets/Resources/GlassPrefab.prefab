@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 628370646947004556}
   - component: {fileID: 6916790871772182938}
   - component: {fileID: 8829467817944643214}
-  - component: {fileID: 1772689762929891474}
   - component: {fileID: 5502970603948897600}
+  - component: {fileID: 5947449623976503030}
   m_Layer: 6
   m_Name: GlassPrefab
   m_TagString: Glass
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.5518868, g: 0.87462306, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5138ed0972e22f00f81e602135f1a741, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,8 +114,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &1772689762929891474
-PolygonCollider2D:
+--- !u!114 &5502970603948897600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634461315071986871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a9e2e993ba74abea2431cc2fc2bbc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kind: {fileID: 11400000, guid: 3ee262687a7224043a2be811877f3e29, type: 2}
+--- !u!61 &5947449623976503030
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -149,29 +162,13 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.625, y: 0.625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
-  m_UseDelaunayMesh: 0
---- !u!114 &5502970603948897600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7634461315071986871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a9e2e993ba74abea2431cc2fc2bbc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kind: {fileID: 11400000, guid: 3ee262687a7224043a2be811877f3e29, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 0.625, y: 0.625}
+  m_EdgeRadius: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2153541703846840011}
   - component: {fileID: 609789699031232122}
   m_Layer: 3
-  m_Name: Platform
+  m_Name: JumpThroughPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

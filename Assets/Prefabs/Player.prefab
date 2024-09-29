@@ -5554,9 +5554,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  walkingPatricles: {fileID: 1957664218146010163}
-  jumpVelocity: 10
-  maxJumpTime: 0.3
+  jumpVelocity: 7
+  maxJumpTime: 1.5
   accSpeed: 40
   decSpeed: 40
   maxSpeed: 5
