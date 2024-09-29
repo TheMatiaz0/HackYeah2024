@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _distance: 1.37
+    - _distance: -1
     - _intensity: 0.9
     - _minus: 0.1
     - _size: 0.16
