@@ -11,8 +11,6 @@ public class VacuumSuckController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-
         vacuumController.CallOnTriggerOnSuckPoint(this.gameObject,other);
-        
     }
 }
