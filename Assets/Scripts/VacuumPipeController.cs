@@ -127,12 +127,15 @@ public class VacuumPipeController : MonoBehaviour
             return;
         }
 
-        UsedSpace[trash.kind]++;
-        SuckOutTrash(trash);
+        if (maxCapacity > UsedSpace[trash.kind])
+        {
+            SuckOutTrash(trash);
+        }
     }
 
     private void SuckOutTrash(Trash trashObject)
     {
+        UsedSpace[trashObject.kind]++;
         vacuumAudioSource.PlayOneShot(suckSound);
         Destroy(trashObject.gameObject);
     }
