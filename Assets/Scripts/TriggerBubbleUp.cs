@@ -35,6 +35,11 @@ namespace Lemur
             listener.OnBubbleUpTriggerEnter(this.gameObject,other);
         }
 
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            listener.OnBubbleUpTriggerStay(this.gameObject,other);
+        }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             listener.OnBubbleUpTriggerExit(this.gameObject,other);

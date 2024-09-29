@@ -52,6 +52,7 @@ public class UIValues : MonoBehaviour
             i++;
         }
 
-        text.text = $"IsVacuumOn: {isVacuumOn}\nCurrentVacuumMode: {currentVacuumMode}\nWaveSpeed: {waveSpeed.ToString()}\n";
+        text.text = "";
+        //text.text = $"IsVacuumOn: {isVacuumOn}\nCurrentVacuumMode: {currentVacuumMode}\nWaveSpeed: {waveSpeed.ToString()}\n";
     }
 }
