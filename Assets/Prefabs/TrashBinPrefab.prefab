@@ -4991,6 +4991,8 @@ MonoBehaviour:
   materialKind: {fileID: 11400000, guid: 3ee262687a7224043a2be811877f3e29, type: 2}
   isLimitUsed: 0
   limit: 100
+  text: {fileID: 0}
+  confetti: {fileID: 4198416864990826913}
 --- !u!61 &8691128089758770081
 BoxCollider2D:
   m_ObjectHideFlags: 0
