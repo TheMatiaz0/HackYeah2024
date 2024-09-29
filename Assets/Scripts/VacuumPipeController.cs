@@ -27,9 +27,10 @@ public class VacuumPipeController : MonoBehaviour
     
     
     [SerializeField] private float suckingForce=0.01f;
-    
-    
-    
+
+    public int MaxCapacity => maxCapacity;
+
+
     public bool IsSucking { get; private set; } = false;
 
     [FormerlySerializedAs("CurrentSuckingModes")]
@@ -127,12 +128,15 @@ public class VacuumPipeController : MonoBehaviour
             return;
         }
 
-        UsedSpace[trash.kind]++;
-        SuckOutTrash(trash);
+        if (maxCapacity > UsedSpace[trash.kind])
+        {
+            SuckOutTrash(trash);
+        }
     }
 
     private void SuckOutTrash(Trash trashObject)
     {
+        UsedSpace[trashObject.kind]++;
         vacuumAudioSource.PlayOneShot(suckSound);
         Destroy(trashObject.gameObject);
     }
