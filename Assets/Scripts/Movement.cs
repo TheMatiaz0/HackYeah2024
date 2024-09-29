@@ -43,6 +43,8 @@ namespace Lemur
         [SerializeField] private float climbingMultiplication = 1.5f;
         [SerializeField] private float minimalClimbingVelocity = 0.4f;
         [SerializeField] private float maximumYVelocity = 11f;
+        [SerializeField] private float minimumAirTime = 0.3f;
+
         
         [Header("Left/Right movement")]
         [SerializeField]
@@ -70,6 +72,7 @@ namespace Lemur
         private Ticker blockMoveTimer;
 
         private float holdingW = 0f;
+        private float airTime = 0f;
 
 
         public enum Possibility
@@ -131,6 +134,9 @@ namespace Lemur
             {
                 LetGoJump();
             }
+
+            if (!isOnTheGround) airTime += Time.deltaTime;
+            else airTime = 0f;
 
 
         }
@@ -194,7 +200,7 @@ namespace Lemur
 
         private void OnCollisionStay2D(Collision2D other)
         {
-            if (Input.GetKeyUp(KeyCode.W) || holdingW >= maxHoldingWtime || this.rigi.velocity.y <= minimalClimbingVelocity)
+            if (Input.GetKeyUp(KeyCode.W) || holdingW >= maxHoldingWtime || this.rigi.velocity.y <= minimalClimbingVelocity || airTime <= minimumAirTime)
                 return;
             if (!isOnTheGround && Input.GetKey(KeyCode.W))
             {
