@@ -5682,6 +5682,10 @@ PrefabInstance:
       value: -76660095
       objectReference: {fileID: 0}
     - target: {fileID: 1176492497082543092, guid: 24da3543ca48ce54bb05ca7fd838deaf, type: 3}
+      propertyPath: rejectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a5fa8f7812721d44595dccfc126be82e, type: 3}
+    - target: {fileID: 1176492497082543092, guid: 24da3543ca48ce54bb05ca7fd838deaf, type: 3}
       propertyPath: ignoreCenter
       value: 
       objectReference: {fileID: 5511322080675308931}

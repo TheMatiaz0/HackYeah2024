@@ -867,8 +867,6 @@ MonoBehaviour:
   vacuum: {fileID: 1176492497082543092}
   materialHelper: {fileID: 11400000, guid: b6e7c79b4391d4417986f40b86a90ebd, type: 2}
   throwingDelay: 0.05
-  vacuumAudioSource: {fileID: 4990555584932735932}
-  vacuumEngineClip: {fileID: 8300000, guid: f262b4b4c58571f4f89e1be8f65c5132, type: 3}
 --- !u!114 &1176492497082543092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,7 +892,9 @@ MonoBehaviour:
   constantSource: {fileID: 4990555584932735932}
   suckSound: {fileID: 8300000, guid: bed5b757654f2444c85bf2a544ddd972, type: 3}
   rejectSound: {fileID: 8300000, guid: 382179e357be96844b0c1f3cd5a90a38, type: 3}
-  vacuumEngineClip: {fileID: 8300000, guid: f262b4b4c58571f4f89e1be8f65c5132, type: 3}
+  intro: {fileID: 8300000, guid: adc8f5a8c6d6be842b7b517df93d5eff, type: 3}
+  loop: {fileID: 8300000, guid: 7e91ac1101bf7d644b74cfb2fc6e13b4, type: 3}
+  outro: {fileID: 8300000, guid: 8752cfe2ebe98484e9db271e27c7f55b, type: 3}
   cooldownSound: 0.5
   vacuumPeak: {fileID: 2322114113981368148}
   ignoreRadius: 1.39

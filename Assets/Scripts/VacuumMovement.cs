@@ -11,9 +11,6 @@ public class VacuumMovement : MonoBehaviour
     [SerializeField] private VacuumPipeController vacuum;
     [SerializeField] private MaterialHelper materialHelper;
     [SerializeField] private float throwingDelay = 0.05f;
-    [Header("Sounds")]
-    [SerializeField] private AudioSource vacuumAudioSource;
-    [SerializeField] private AudioClip vacuumEngineClip;
 
     private int currentIndex;
     private float currentThrowingDelay = 0f;

@@ -18,7 +18,9 @@ public class VacuumPipeController : MonoBehaviour
     [SerializeField] private AudioSource constantSource;
     [SerializeField] private AudioClip suckSound;
     [SerializeField] private AudioClip rejectSound;
-    [SerializeField] private AudioClip vacuumEngineClip;
+    [SerializeField] private AudioClip intro;
+    [SerializeField] private AudioClip loop;
+    [SerializeField] private AudioClip outro;
     [SerializeField] private float cooldownSound = 0.5f;
     
     [SerializeField] private Transform vacuumPeak;
@@ -40,6 +42,7 @@ public class VacuumPipeController : MonoBehaviour
     private Trash previousTrash;
     private float requiredTimer;
     private MaterialKind[] availableMaterials;
+    private Coroutine coroutine;
 
     private void Awake()
     {
@@ -52,18 +55,35 @@ public class VacuumPipeController : MonoBehaviour
     {
         if (val)
         {
-            
-            constantSource.clip = vacuumEngineClip;
-            constantSource.loop = true;
-            constantSource.Play();
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutine = StartCoroutine(WaitForSoundEnd());
         }
         else
         {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+
             constantSource.Stop();
+            vacuumAudioSource.Stop();
+            vacuumAudioSource.PlayOneShot(outro);
         }
         this.IsSucking = val;
-        
-    } 
+    }
+
+    private IEnumerator WaitForSoundEnd()
+    {
+        vacuumAudioSource.PlayOneShot(intro);
+        yield return new WaitForSeconds(intro.length);
+        constantSource.clip = loop;
+        constantSource.loop = true;
+        constantSource.Play();
+        coroutine = null;
+    }
 
     private void Start()
     {

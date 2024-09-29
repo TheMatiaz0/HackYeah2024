@@ -55,7 +55,7 @@ Material:
     - _rotation: 1
     m_Colors:
     - _Color: {r: 0.8785898, g: 0.8867924, b: 0.7905838, a: 0.003921569}
-    - _Outline_color: {r: 1, g: 1, b: 1, a: 0.003921569}
+    - _Outline_color: {r: 0.5851277, g: 1, b: 0.49622637, a: 0.003921569}
   m_BuildTextureStacks: []
 --- !u!114 &5690997575340521295
 MonoBehaviour:
