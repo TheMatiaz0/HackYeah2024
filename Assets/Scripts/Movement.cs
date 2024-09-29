@@ -150,7 +150,7 @@ namespace Lemur
             }
             else
             {
-                Debug.LogWarning($"Mising an animation {nm}");
+                //Debug.LogWarning($"Mising an animation {nm}");
                 animer.Stop();
             }
         }

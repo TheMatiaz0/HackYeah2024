@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5536585391335960223}
   - component: {fileID: -1283884498041425058}
   - component: {fileID: 1460688564962103283}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PaperPrefab
   m_TagString: Paper
   m_Icon: {fileID: 0}
