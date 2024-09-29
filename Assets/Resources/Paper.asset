@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c3071bc4684ba88acab7eeab528dc9, type: 3}
   m_Name: Paper
   m_EditorClassIdentifier: 
+  assignedSymbol: {fileID: 21300000, guid: 0564b2404a3bff7499c3e4a4982e3d36, type: 3}

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class VacuumMovement : MonoBehaviour
 {
+    private const string MouseScroll = "Mouse ScrollWheel";
+
     [SerializeField] private VacuumPipeController vacuum;
     [SerializeField] private MaterialHelper materialHelper;
     [SerializeField] private float throwingDelay = 0.05f;
@@ -12,6 +14,7 @@ public class VacuumMovement : MonoBehaviour
     [SerializeField] private AudioSource vacuumAudioSource;
     [SerializeField] private AudioClip vacuumEngineClip;
 
+    private int currentIndex;
     private float currentThrowingDelay = 0f;
     
     void Update()
@@ -36,13 +39,22 @@ public class VacuumMovement : MonoBehaviour
             currentThrowingDelay = throwingDelay;
         }
 
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            vacuum.CurrentSuckingMode = materialHelper.SuckingModes[0];
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-            vacuum.CurrentSuckingMode = materialHelper.SuckingModes[1];
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-            vacuum.CurrentSuckingMode = materialHelper.SuckingModes[2];
+        if (Input.GetAxisRaw(MouseScroll) > 0)
+        {
+            currentIndex++;
+        }
+        else if (Input.GetAxisRaw(MouseScroll) < 0)
+        {
+            currentIndex--;
+        }
+        for (int i = 49; i < 52; i++)
+        {
+            if (Input.GetKeyDown((KeyCode)i))
+            {
+                vacuum.CurrentSuckingMode = materialHelper.SuckingModes[i - 49];
+                currentIndex = i - 49;
+            }
+        }
         
         vacuum.FollowMouse(transform.position);
     }

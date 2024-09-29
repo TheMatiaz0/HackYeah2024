@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c3071bc4684ba88acab7eeab528dc9, type: 3}
   m_Name: Glass
   m_EditorClassIdentifier: 
+  assignedSymbol: {fileID: 21300000, guid: bb08a87ce16bce94993e52dac2d259de, type: 3}

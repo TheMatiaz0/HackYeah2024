@@ -11,6 +11,8 @@ public class UIValues : MonoBehaviour
     [SerializeField] private VacuumPipeController vacuumController;
     [SerializeField] private WaveController waveController;
     [SerializeField] private Text text;
+    [SerializeField] private Image image;
+
     //vacuum
     private bool isVacuumOn;
     private MaterialKind currentVacuumMode;
@@ -21,6 +23,7 @@ public class UIValues : MonoBehaviour
     
     void Update()
     {
+        image.sprite = vacuumController.CurrentSuckingMode.AssignedSymbol;
         isVacuumOn = vacuumController.IsSucking;
         currentVacuumMode = vacuumController.CurrentSuckingMode;
         waveSpeed = waveController.currentSpeed;
