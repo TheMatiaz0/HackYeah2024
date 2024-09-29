@@ -245,8 +245,9 @@ namespace Lemur
         public void OnBubbleUpTriggerEnter(GameObject internalObj, Collider2D incoming)
         {
             
-            if ( ( groundMask.value &   (1<<incoming.gameObject.layer)) !=0 && feetCollider.gameObject == internalObj)
+            if ( ( groundMask.value &   (1<<incoming.gameObject.layer)) !=0 && feetCollider.gameObject == internalObj && this.rigi.velocity.y<=0.1)
             {
+                
                 if (!isOnTheGround)
                 {
                     walkingPatricles.Play();
