@@ -411,6 +411,10 @@ PrefabInstance:
       propertyPath: waveSpeed
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 7296091240171171908, guid: 46b8f35c59d4c684fa5f09e179f1861f, type: 3}
+      propertyPath: waveAcceleration
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -944,9 +948,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.125
+    x: 0
     y: 0
-    width: 0.75000006
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
