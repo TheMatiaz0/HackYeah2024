@@ -34,17 +34,17 @@ public class VacuumPipeController : MonoBehaviour
 
     [FormerlySerializedAs("CurrentSuckingModes")]
     public MaterialKind CurrentSuckingMode;
-    public Dictionary<string, int> UsedSpace;
+    public Dictionary<MaterialKind, int> UsedSpace;
     
     private Trash previousTrash;
     private float requiredTimer;
-    private string[] availableMaterials;
+    private MaterialKind[] availableMaterials;
 
     private void Awake()
     {
         CurrentSuckingMode = materialHelper.SuckingModes[0];
-        UsedSpace = new Dictionary<string, int>();
-        availableMaterials = new string[materialHelper.SuckingModes.Length];
+        UsedSpace = new Dictionary<MaterialKind, int>();
+        availableMaterials = new MaterialKind[materialHelper.SuckingModes.Length];
     }
 
     public void ChangeSucking(bool val)
@@ -68,7 +68,7 @@ public class VacuumPipeController : MonoBehaviour
     {
         for (int i = 0; i < materialHelper.SuckingModes.Length; i++)
         {
-            availableMaterials[i] = materialHelper.SuckingModes[i].ToString();
+            availableMaterials[i] = materialHelper.SuckingModes[i];
             UsedSpace.Add(availableMaterials[i], 0);
         }
     }
@@ -127,7 +127,7 @@ public class VacuumPipeController : MonoBehaviour
             return;
         }
 
-        UsedSpace[trash.kind.ToString()]++;
+        UsedSpace[trash.kind]++;
         SuckOutTrash(trash);
     }
 
@@ -144,11 +144,11 @@ public class VacuumPipeController : MonoBehaviour
         {
             if (i.kind != CurrentSuckingMode)
                 continue;
-            if (UsedSpace[i.kind.ToString()] <= 0)
+            if (UsedSpace[i.kind] <= 0)
                 return;
             
             trash = Instantiate(i);
-            UsedSpace[i.kind.ToString()]--;
+            UsedSpace[i.kind]--;
             break;
         }
 

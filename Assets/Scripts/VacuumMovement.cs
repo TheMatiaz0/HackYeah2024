@@ -1,3 +1,4 @@
+using Rubin;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,20 +43,27 @@ public class VacuumMovement : MonoBehaviour
         if (Input.GetAxisRaw(MouseScroll) > 0)
         {
             currentIndex++;
+            SetSuckingMode();
         }
         else if (Input.GetAxisRaw(MouseScroll) < 0)
         {
             currentIndex--;
+            SetSuckingMode();
         }
         for (int i = 49; i < 52; i++)
         {
             if (Input.GetKeyDown((KeyCode)i))
             {
-                vacuum.CurrentSuckingMode = materialHelper.SuckingModes[i - 49];
                 currentIndex = i - 49;
+                SetSuckingMode();
             }
         }
         
         vacuum.FollowMouse(transform.position);
+    }
+
+    private void SetSuckingMode()
+    {
+        vacuum.CurrentSuckingMode = materialHelper.SuckingModes[RHelper.Wrap(currentIndex, materialHelper.SuckingModes.Length)];
     }
 }

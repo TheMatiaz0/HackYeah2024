@@ -73,7 +73,7 @@ namespace Rubin
         {
             if (value < 0)
             {
-                return size - ((-value) % size);
+                return (size - ((-value) % size)) % size;
             }
             else return value % size;
         }
@@ -83,7 +83,7 @@ namespace Rubin
         {
             if (value < 0)
             {
-                return size - ((-value) % size);
+                return (size - ((-value) % size)) % size;
             }
             else return value % size;
         }

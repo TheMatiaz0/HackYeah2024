@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -13,24 +14,44 @@ public class UIValues : MonoBehaviour
     [SerializeField] private Text text;
     [SerializeField] private Image image;
 
+    [SerializeField]
+    private Image[] images;
+    [SerializeField]
+    private Text[] texts; 
+
     //vacuum
     private bool isVacuumOn;
     private MaterialKind currentVacuumMode;
-    private Dictionary<string, int> usedSpace;
     
     //wave
     private float waveSpeed;
-    
+
+    private void Start()
+    {
+        UpdateFirstFrame();
+    }
+
     void Update()
+    {
+        UpdateFirstFrame();
+    }
+
+    private void UpdateFirstFrame()
     {
         image.sprite = vacuumController.CurrentSuckingMode.AssignedSymbol;
         isVacuumOn = vacuumController.IsSucking;
         currentVacuumMode = vacuumController.CurrentSuckingMode;
         waveSpeed = waveController.currentSpeed;
-        usedSpace = vacuumController.UsedSpace;
+        var i = 0;
+        foreach (var item in vacuumController.UsedSpace.Keys)
+        {       
+            images[i].sprite = item.AssignedSymbol;
+            var count = vacuumController.UsedSpace[item];
+            texts[i].text = count.ToString();
+
+            i++;
+        }
 
         text.text = $"IsVacuumOn: {isVacuumOn}\nCurrentVacuumMode: {currentVacuumMode}\nWaveSpeed: {waveSpeed.ToString()}\n";
-        foreach (var i in usedSpace)
-            text.text += i.ToString() + "\n";
     }
 }
