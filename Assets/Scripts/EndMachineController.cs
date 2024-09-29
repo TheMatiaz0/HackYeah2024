@@ -11,6 +11,7 @@ public class EndMachineController : MonoBehaviour
 
     [SerializeField] private GameObject pressEPrefab;
     [SerializeField] private Transform canvas;
+    [SerializeField] private Collider2D player;
 
     private GameObject instantiatedText = null;
 
@@ -37,6 +38,7 @@ public class EndMachineController : MonoBehaviour
         var children = tiles.GetComponentsInChildren<Collider2D>();
         foreach (var i in children)
             i.isTrigger = true;
+        player.enabled = false;
         Destroy(wave.gameObject);
     }
 }
