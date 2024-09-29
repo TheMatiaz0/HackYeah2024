@@ -87,8 +87,8 @@ namespace Lemur
 
         private void BounceOff(float dir)
         {
-            this.rigi.velocity += new Vector2(dir*bounceTemplateVector.x, bounceTemplateVector.y);
-            blockMoveTimer.Reset();
+            //this.rigi.velocity += new Vector2(dir*bounceTemplateVector.x, bounceTemplateVector.y);
+            //blockMoveTimer.Reset();
         }
 
         private void Update()
