@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Honey;
 using Rubin;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 namespace Lemur
@@ -32,6 +33,10 @@ namespace Lemur
         [SerializeField]
         private float maxJumpTime = 1;
         [SerializeField] private float lostControlAfterBounceTime=0.5f;
+        [SerializeField] private float maxHoldingWtime = 0.03f;
+        [SerializeField] private float climbingMultiplication = 1.5f;
+        [SerializeField] private float minimalClimbingVelocity = 0.4f;
+        [SerializeField] private float maximumYVelocity = 11f;
         
         [Header("Left/Right movement")]
         [SerializeField]
@@ -57,6 +62,8 @@ namespace Lemur
 
         private bool isOnTheGround;
         private Ticker blockMoveTimer;
+
+        private float holdingW = 0f;
 
 
         public enum Possibility
@@ -151,14 +158,20 @@ namespace Lemur
         void KeepJumping()
         {
             this.rigi.velocity = new Vector2(this.rigi.velocity.x, jumpVelocity);
-            
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnCollisionStay2D(Collision2D other)
         {
-            if (!isOnTheGround && this.rigi.velocity.y > 0.25)
+            if (Input.GetKeyUp(KeyCode.W) || holdingW >= maxHoldingWtime || this.rigi.velocity.y <= minimalClimbingVelocity)
+                return;
+            if (!isOnTheGround && Input.GetKey(KeyCode.W))
             {
-                BounceOff(Mathf.Sign(this.transform.position.x-other.transform.position.x));
+                this.rigi.velocity = Vector2.up * this.rigi.velocity.magnitude * climbingMultiplication;
+                if (this.rigi.velocity.y > maximumYVelocity)
+                    this.rigi.velocity = new Vector2(this.rigi.velocity.x, maximumYVelocity);
+                holdingW += Time.deltaTime;
+
+                // BounceOff(Mathf.Sign(this.transform.position.x-other.transform.position.x));
             }
         }
 
@@ -191,6 +204,7 @@ namespace Lemur
                     walkingPatricles.Play();
                 }
                 isOnTheGround = true;
+                holdingW = 0f;
             }
         }
 
