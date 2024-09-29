@@ -25,6 +25,7 @@ namespace Lemur
         [SerializeField] private Collider2D feetCollider;
         [SerializeField]
         private LayerMask groundMask;
+        [SerializeField] private ParticleSystem walkingPatricles;
         
         
         [Header("jumping")]
@@ -40,6 +41,8 @@ namespace Lemur
         private float decSpeed = 5;
         [SerializeField]
         private float maxSpeed = 5;
+        
+  
 
         [Tooltip("If false, when object is moving in the right direction and left key is pressed, untill velocity = 0, dec is used\n If true acc is used")]
         [SerializeField] private bool fastRotation=false;
