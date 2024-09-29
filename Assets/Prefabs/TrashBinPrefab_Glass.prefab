@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 8691128089758770081}
   - component: {fileID: 3451138202493119250}
   m_Layer: 3
-  m_Name: TrashBinPrefab
+  m_Name: TrashBinPrefab_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
