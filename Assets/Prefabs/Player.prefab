@@ -5340,8 +5340,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   walkingPatricles: {fileID: 1957664218146010163}
-  jumpVelocity: 11
-  maxJumpTime: 1
+  jumpVelocity: 7.6
+  maxJumpTime: 0.3
   lostControlAfterBounceTime: 0.5
   maxHoldingWtime: 0.03
   climbingMultiplication: 1.5

@@ -119,10 +119,17 @@ namespace Lemur
             else
                 PushIn( - Mathf.Sign(this.rigi.velocity.x) ,false);
 
-            if ((jumpProgress.Done && Input.GetKeyDown(jump) || (!jumpProgress.Done && Input.GetKey(jump)))) 
+            if (Input.GetKey(jump) &&  (this.rigi.velocity.y<0.1f || !jumpProgress.Done))
+            {
                 TryJump();
+            }
             else
+            {
+                
+                Debug.Log("letgo");
                 LetGoJump();
+                
+            }
 
             if (!isOnTheGround) airTime += Time.deltaTime;
             else airTime = 0f;
@@ -233,7 +240,7 @@ namespace Lemur
             {
 
                 
-                jumpProgress.ForceFinish();
+                //jumpProgress.ForceFinish();
                 
 //                if(this.rigi.velocity.y>0.1f)
 //                    return;
