@@ -10,6 +10,13 @@ public class ShockwaveShaderController : MonoBehaviour
     [SerializeField] private Material material;
     private static int distance = Shader.PropertyToID("_distance");
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            startShockwave();
+        }
+    }
 
     public void startShockwave()
     {
