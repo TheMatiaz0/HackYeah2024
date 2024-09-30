@@ -1,7 +1,4 @@
-using Honey;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -25,22 +22,21 @@ public class Screenshotter : MonoBehaviour
 
     void Update()
     {
-        TakeScreenshot();
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TakeScreenshot();
+        }
     }
 
-    [EMethodButton]
     private void TakeScreenshot()
     {
-        if (Input.GetKeyDown(KeyCode.F12))
+        string path = DateTime.Now.ToString("yy=MM-dd hh-mm-ss");
+        if (!Directory.Exists(targetDirectory))
         {
-            string path = DateTime.Now.ToString("yy=MM-dd hh-mm-ss");
-            if (!Directory.Exists(targetDirectory))
-            {
-                Directory.CreateDirectory(targetDirectory);
-            }
-
-            path = Path.Join(Directory.GetCurrentDirectory(), targetDirectory, $"{path}.png");
-            ScreenCapture.CaptureScreenshot(path, superSize);
+            Directory.CreateDirectory(targetDirectory);
         }
+
+        path = Path.Join(Directory.GetCurrentDirectory(), targetDirectory, $"{path}.png");
+        ScreenCapture.CaptureScreenshot(path, superSize);
     }
 }
